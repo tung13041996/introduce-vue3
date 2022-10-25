@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VUE Mastery - Introduce</title>
+    <link rel="icon" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="lib/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{ product }}</h1>
+    <p><strong>Description:</strong>{{ description }}</p>
+</div>
+
+<!--Import App-->
+<script src="assets/script.js"></script>
+
+<!--Mount App-->
+<script>
+    const mountedApp = app.mount('#app');
+</script>
+
+
+</body>
+</html>
