@@ -52,6 +52,8 @@ a, button {color:#000; transition:all .3s ease;}
 
 /* Spacing */
 .margin-bottom-80px {margin-bottom:80px;}
+.margin-bottom-40px {margin-bottom:40px;}
+.margin-bottom-20px {margin-bottom:20px;}
 
 /* CSS Class */
 .d-flex {display:flex;}

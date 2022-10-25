@@ -22,8 +22,17 @@
                 </div>
             </div>
             <div class="product-info">
-                <h1>{{ product }}</h1>
-                <p v-show = "onSale">On Sale</p>
+                <h1 class="margin-bottom-20px">{{ product }}</h1>
+                <p class="margin-bottom-20px" v-if = "inStock">In stock</p>
+                <p class="margin-bottom-20px" v-else>Out of stock</p>
+                <ul class="margin-bottom-20px list-material">
+                    <li v-for="detail in details">{{ detail }}</li>
+                </ul>
+                <div class="margin-bottom-20px product-size">
+                    <p v-for="(size, index) in sizes" :key="size.id" :class="[`product-size-${index}`]">
+                        Product with size: <strong>{{ size.size }}</strong>, for people: <strong>{{ size.people }}</strong>
+                    </p>
+                </div>
             </div>
         </div>
 
