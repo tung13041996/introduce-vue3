@@ -28,11 +28,20 @@
                 <ul class="margin-bottom-20px list-material">
                     <li v-for="detail in details">{{ detail }}</li>
                 </ul>
-                <div class="margin-bottom-20px product-size">
-                    <p v-for="(size, index) in sizes" :key="size.id" :class="[`product-size-${index}`]">
-                        Product with size: <strong>{{ size.size }}</strong>, for people: <strong>{{ size.people }}</strong>
-                    </p>
+                <div class="margin-bottom-20px list-material">
+                    <div v-for="variant in variants" :key="variant"  @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
                 </div>
+                <div class="product-button d-flex">
+                    <button class="btn_primary" @click="addToCart">
+                        Add to cart
+                    </button>
+                    <button :class="[`btn_primary ${cart <= 0 ? 'disabled' :'' }`]" @click="removeToCart">
+                        Remove to cart
+                    </button>
+                </div>
+            </div>
+            <div class="product-cart fl-center">
+                <span>Cart({{ cart }})</span>
             </div>
         </div>
 

@@ -40,7 +40,7 @@ html {
     max-width:1280px; margin-left:auto; margin-right:auto;
     padding-left:40px; padding-right:40px;
 }
-a, button {color:#000; transition:all .3s ease;}
+a, button {color:#000; cursor:pointer; transition:all .3s ease;}
 .btn_primary {
     display:inline-flex; align-items:center; justify-content:center;
     text-align:center; overflow:hidden;
@@ -48,7 +48,8 @@ a, button {color:#000; transition:all .3s ease;}
     font-weight:600; text-decoration:none; color: #000;
     border:2px solid #000; border-radius:10px;
 }
-.btn_primary:hover, .btn_primary:focus {background:#000; color:#fff;}
+.btn_primary:not(.disabled):hover {background:#000; color:#fff;}
+.btn_primary.disabled {cursor:not-allowed; opacity:.5;}
 
 /* Spacing */
 .margin-bottom-80px {margin-bottom:80px;}
@@ -80,3 +81,12 @@ a, button {color:#000; transition:all .3s ease;}
 }
 
 /* Product > Info */
+.product-info {width:50%;}
+
+/* Product > Cart */
+.product-cart {
+    width:10%; height:50px;
+    background:#fff; text-align:center;
+}
+/* Product > Button */
+.product-button {gap:20px;}
