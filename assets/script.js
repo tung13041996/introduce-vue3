@@ -4,7 +4,7 @@ const app = Vue.createApp({
             product: "Shoes",
             description: "It's the description for this product.",
             image: './assets/images/green-shoe.png',
-            inStock: true,
+            inStock: false,
             details: ['50% cotton', '30% wool', '20% polyester'],
             variants: [
                 {id:1000,  color:"green", image:"./assets/images/green-shoe.png"},
@@ -20,7 +20,9 @@ const app = Vue.createApp({
     },
     methods: {
         addToCart() {
-            this.cart++;
+            if (this.inStock) {
+                this.cart++;
+            }
         },
         removeToCart() {
             if (this.cart >0) {

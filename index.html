@@ -16,26 +16,32 @@
     <div id="app">
         <div class="product-display  d-flex">
             <div class="product-container">
-                <div class="product-image image-contain">
+                <div class="product-image image-contain" :class="[!inStock ? 'out-of-stock' : '']">
                     <!--image here-->
                     <img :src="image" alt="">
                 </div>
             </div>
             <div class="product-info">
                 <h1 class="margin-bottom-20px">{{ product }}</h1>
-                <p class="margin-bottom-20px" v-if = "inStock">In stock</p>
+                <p class="margin-bottom-20px" v-if="inStock">In stock</p>
                 <p class="margin-bottom-20px" v-else>Out of stock</p>
                 <ul class="margin-bottom-20px list-material">
                     <li v-for="detail in details">{{ detail }}</li>
                 </ul>
-                <div class="margin-bottom-20px list-material">
-                    <div v-for="variant in variants" :key="variant"  @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+                <div class="margin-bottom-20px product-material d-flex">
+                    <div class="product-color fl-center"
+                         v-for="variant in variants"
+                         :key="variant"
+                         @mouseover="updateImage(variant.image)"
+                         :style="{backgroundColor: variant.color}">
+                        {{ variant.color }}
+                    </div>
                 </div>
                 <div class="product-button d-flex">
-                    <button class="btn_primary" @click="addToCart">
+                    <button class="btn_primary" :class="{disabled: !inStock}" @click="addToCart">
                         Add to cart
                     </button>
-                    <button :class="[`btn_primary ${cart <= 0 ? 'disabled' :'' }`]" @click="removeToCart">
+                    <button class="btn_primary" :class="{disabled:cart <=0}" @click="removeToCart" >
                         Remove to cart
                     </button>
                 </div>
