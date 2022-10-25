@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="product-info">
-                <h1 class="margin-bottom-20px">{{ product }}</h1>
+                <h1 class="margin-bottom-20px">{{ title }}</h1>
                 <p class="margin-bottom-20px" v-if="inStock">In stock</p>
                 <p class="margin-bottom-20px" v-else>Out of stock</p>
                 <ul class="margin-bottom-20px list-material">
@@ -30,9 +30,9 @@
                 </ul>
                 <div class="margin-bottom-20px product-material d-flex">
                     <div class="product-color fl-center"
-                         v-for="variant in variants"
+                         v-for="(variant,index) in variants"
                          :key="variant"
-                         @mouseover="updateImage(variant.image)"
+                         @click="updateVariant(index)"
                          :style="{backgroundColor: variant.color}">
                         {{ variant.color }}
                     </div>

@@ -85,7 +85,7 @@ a, button {color:#000; cursor:pointer; transition:all .3s ease;}
 .product-info {width:50%;}
 .product-material {gap:20px;}
 .product-color {
-    width:40px; aspect-ratio:1;
+    width:40px; aspect-ratio:1; cursor:pointer;
     border-radius:50%; font-size:0; transition:all .3s ease;
 }
 
