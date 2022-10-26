@@ -7,7 +7,7 @@ app.component('product-display', {
     },
     template:
     /* HTML */
-        `<div class="product-display  d-flex">
+        `<div class="product-display margin-bottom-80px d-flex">
             <div class="product-container">
                 <div class="product-image image-contain" :class="[!inStock ? 'out-of-stock' : '']">
                     <!--image here-->
@@ -38,7 +38,9 @@ app.component('product-display', {
                     </button>
                 </div>
             </div>
-        </div>`,
+        </div>
+        <review-list  v-if="reviews.length" :reviews="reviews"></review-list>
+        <review-form @review-submitted="addReview"></review-form>`,
     data(){
         return {
             product: "Shoes",
@@ -54,7 +56,8 @@ app.component('product-display', {
                 {size: 20, people: "kid"},
                 {size: 32, people: "women"},
                 {size: 42, people: "men"}
-            ]
+            ],
+            reviews: [],
         }
     },
     methods: {
@@ -72,8 +75,11 @@ app.component('product-display', {
         updateVariant(index){
             this.selectedVariant = index;
         },
-        statusButton() {
+        statusButton(){
             this.$emit('status-button');
+        },
+        addReview(review) {
+            this.reviews.push(review);
         }
     },
     computed: {
@@ -88,9 +94,9 @@ app.component('product-display', {
         inStock(){
             return this.variants[this.selectedVariant].quantity > 0;
         },
-        shipping() {
-            if (this.premium) return "Free";
-            return  "2.99$"
+        shipping(){
+            if(this.premium) return "Free";
+            return "2.99$"
         }
     }
 })
