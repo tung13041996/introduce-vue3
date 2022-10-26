@@ -17,7 +17,12 @@
         <div class="product-cart fl-center ps-absolute t0 r0">
             <span>Cart({{ cart }})</span>
         </div>
-        <product-display :premium="premium"></product-display>
+        <product-display
+                :premium="premium"
+                @add-to-cart = "updateCartUp"
+                @remove-to-cart = "updateCartDown"
+                @status-button = "updateButton"
+        ></product-display>
 
     </div>
 </div>

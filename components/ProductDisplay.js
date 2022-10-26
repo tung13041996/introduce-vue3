@@ -30,10 +30,10 @@ app.component('product-display', {
                     </div>
                 </div>
                 <div class="product-button d-flex">
-                    <button class="btn_primary" :class="{disabled: !inStock}" @click="addToCart">
+                    <button class="btn_primary" :class="{disabled: !inStock} || !statusButton" @click="addToCart">
                         Add to cart
                     </button>
-                    <button class="btn_primary" :class="{disabled:cart <=0}" @click="removeToCart" >
+                    <button class="btn_primary" :class="{disabled: !inStock}" @click="removeToCart" >
                         Remove to cart
                     </button>
                 </div>
@@ -48,7 +48,7 @@ app.component('product-display', {
             details: ['50% cotton', '30% wool', '20% polyester'],
             variants: [
                 {id: 1000, color: "green", image: "./assets/images/green-shoe.png", quantity: 50},
-                {id: 1001, color: "blue", image: "./assets/images/blue-shoe.png", quantity: 0}
+                {id: 1001, color: "blue", image: "./assets/images/blue-shoe.png", quantity: 40}
             ],
             sizes: [
                 {size: 20, people: "kid"},
@@ -60,19 +60,20 @@ app.component('product-display', {
     methods: {
         addToCart(){
             if(this.variants[this.selectedVariant].quantity > 0){
-                this.cart++;
+                this.$emit('add-to-cart');
             }
         },
         removeToCart(){
-            if(this.cart > 0){
-                this.cart--;
-            }
+            this.$emit('remove-to-cart');
         },
         updateImage(image){
             this.image = image;
         },
         updateVariant(index){
             this.selectedVariant = index;
+        },
+        statusButton() {
+            this.$emit('status-button');
         }
     },
     computed: {
